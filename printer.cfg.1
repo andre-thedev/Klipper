@@ -1,6 +1,6 @@
 # K1-MAX
 # Printer_size: 300x300x300
-# Version: v1.0.3
+# Version: v1.0.4
 # CreateDate: 2024/01/11
 # Nozzle_mcu: chip: GD32F303CBT6
 #             version: K1-NOZZLE-M_V12
@@ -14,7 +14,6 @@
 [include gcode_macro.cfg]
 [include printer_params.cfg]
 [include Helper-Script/camera-settings.cfg]
-[include Helper-Script/timelapse.cfg]
 [include Helper-Script/git-backup.cfg]
 [include Helper-Script/M600-support.cfg]
 [include Helper-Script/screws-tilt-adjust.cfg]
@@ -25,6 +24,7 @@
 [include Helper-Script/nozzle-cleaning-fan-control.cfg]
 [include Helper-Script/buzzer-support.cfg]
 [include Helper-Script/KAMP/KAMP_Settings.cfg]
+[include Helper-Script/timelapse.cfg]
 
 [mcu]
 serial: /dev/ttyS7
@@ -253,8 +253,8 @@ pin: multi_pin:heater_fans
 heater: extruder
 heater_temp: 40
 
-[static_digital_output my_fan_output_pins]
-pins: nozzle_mcu: PB6
+[output_pin my_fan_output_pins]
+pin: nozzle_mcu: PB6
 
 [output_pin fan0]
 pin: !nozzle_mcu: PB8
@@ -445,18 +445,20 @@ max_z_accel: 300
 
 [exclude_object]
 
+[include moonraker_obico_macros.cfg]
+
 #*# <---------------------- SAVE_CONFIG ---------------------->
 #*# DO NOT EDIT THIS BLOCK OR BELOW. The contents are auto-generated.
 #*#
 #*# [bed_mesh default]
 #*# version = 1
 #*# points =
-#*# 	  0.807437, 0.757938, 0.737813, 0.713156, 0.693656, 0.676812
-#*# 	  0.371125, 0.340625, 0.360812, 0.326861, 0.248781, 0.162656
-#*# 	  0.192156, 0.195719, 0.151625, 0.086844, 0.005406, -0.081812
-#*# 	  0.166043, 0.108563, 0.110031, 0.093281, 0.042236, -0.069875
-#*# 	  0.301875, 0.300077, 0.297747, 0.256957, 0.195594, 0.152460
-#*# 	  0.602153, 0.590719, 0.617523, 0.670080, 0.644469, 0.578688
+#*# 	  0.082688, 0.019219, 0.012250, 0.008156, 0.007125, -0.001875
+#*# 	  -0.088469, -0.090062, -0.025563, -0.066125, -0.021781, -0.182031
+#*# 	  0.005438, 0.065813, 0.027031, 0.000295, 0.008625, -0.098438
+#*# 	  0.243187, 0.277375, 0.294185, 0.273031, 0.346878, 0.187031
+#*# 	  0.640597, 0.749344, 0.800193, 0.721937, 0.710827, 0.681548
+#*# 	  1.155307, 1.216625, 1.297219, 1.362813, 1.358312, 1.372500
 #*# x_count = 6
 #*# y_count = 6
 #*# mesh_x_pps = 2
@@ -471,28 +473,28 @@ max_z_accel: 300
 #*# [bed_mesh adaptive]
 #*# version = 1
 #*# points =
-#*# 	  0.571781, 0.569438, 0.562406, 0.528563, 0.501375, 0.449250
-#*# 	  0.269565, 0.291315, 0.267221, 0.250619, 0.210409, 0.166784
-#*# 	  0.162879, 0.144911, 0.122064, 0.100942, 0.019692, 0.004536
-#*# 	  0.160919, 0.132990, 0.116183, 0.095825, 0.063569, 0.004007
-#*# 	  0.239759, 0.251571, 0.247304, 0.218796, 0.193492, 0.155915
-#*# 	  0.455730, 0.471730, 0.477303, 0.444730, 0.449636, 0.415230
+#*# 	  0.010938, 0.001000, -0.012750, -0.010562, -0.047531, -0.103156
+#*# 	  -0.067218, -0.044937, 0.054126, -0.049312, 0.057876, -0.169468
+#*# 	  0.036127, 0.152002, 0.044260, 0.042309, 0.035868, -0.088655
+#*# 	  0.264704, 0.308784, 0.295127, 0.298971, 0.336502, 0.176752
+#*# 	  0.579412, 0.708407, 0.665128, 0.646373, 0.656659, 0.543892
+#*# 	  0.968203, 1.094066, 1.177194, 1.206623, 1.211129, 1.121410
 #*# x_count = 6
 #*# y_count = 6
 #*# mesh_x_pps = 2
 #*# mesh_y_pps = 2
 #*# algo = lagrange
 #*# tension = 0.2
-#*# min_x = 62.59
-#*# max_x = 232.34
-#*# min_y = 33.71
-#*# max_y = 272.86
+#*# min_x = 5.81
+#*# max_x = 292.66
+#*# min_y = 8.05
+#*# max_y = 284.2
 #*#
 #*# [prtouch default]
 #*# version = 307
 #*#
 #*# [input_shaper]
 #*# shaper_type_x = zv
-#*# shaper_freq_x = 47.2
+#*# shaper_freq_x = 44.8
 #*# shaper_type_y = zv
-#*# shaper_freq_y = 48.0
+#*# shaper_freq_y = 42.6
