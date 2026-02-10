@@ -1,2 +1,2 @@
-# k1max
-klipper
+# Klipper
+K1Max-Ender3
